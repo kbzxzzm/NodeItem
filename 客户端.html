@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <script src="./node_modules/axios/dist/axios.js"></script>
-</head>
-
-<body>
-    <span id="text"></span>
+  </head>
+  <body>
+    <h1>数据库blog中user下的name数据展示</h1>
+    <h2>需要创建才能拿到数据，nodejs的博大精深最难点</h2>
+    <h3>数据展示： <span id="text"></span>|| <span id="zy"></span></h3>
+    <span>当前状态码： <span id="state"></span> </span>
     <!-- <button id="btn">点击获取</button> -->
     <script>
-        // var btn = document.getElementById('btn')
-        var span = document.getElementById('text')
-        window.setTimeout(function () {
-            getuser()
-        }, 100)
-        async function getuser() { //该方法是获取用户名
-            let res = await axios.get('http://localhost:8888/getmore')
-            span.innerHTML = res.data[0].username
-        }
+      // var btn = document.getElementById('btn')
+      var span = document.getElementById("text");
+      var zy = document.getElementById("zy");
+      var state = document.getElementById("state");
+      window.setTimeout(function() {
+        getuser();
+      }, 100);
+      async function getuser() {
+        //该方法是获取用户名
+        let res = await axios.get("http://localhost:8888/getmore");
+        // console.log(res);
+        let arr = [];
+        arr = res.data;
+        console.log(arr);
+        span.innerHTML = arr[0].name;
+        zy.innerHTML = arr[1].name;
+        state.innerHTML = arr.state;
+      }
     </script>
-</body>
-
+  </body>
 </html>

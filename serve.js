@@ -33,10 +33,10 @@ APP.get("/getmore", (req, res) => {
   });
 });
 
-// let sql = "select * from user";
-// con.query(sql, (err, result) => {
-//   console.log(result);
-// });
+let sql = "select * from user";
+con.query(sql, (err, result) => {
+  console.log(result);//服务端口返回数据
+});
 
 // con.end(); //关闭连接
 APP.listen(8888, () => {
